@@ -6,6 +6,7 @@ import AccomodationRoot from './LandingPageLayout/Accomodation/AccomodationRoot'
 import ExperienceRoot from './LandingPageLayout/Experience/ExperienceRoot';
 import ReviewsRoot from './LandingPageLayout/Reviews/ReviewsRoot';
 import ServicesRoot from './LandingPageLayout/Services/ServicesRoot';
+import FooterRoot from './LandingPageLayout/Footer/FooterRoot';
 
 const RootPage = () => {
     return (
@@ -26,6 +27,8 @@ const RootPage = () => {
             </div>
 
             <ServicesRoot />
+
+            <FooterRoot/>
         </div>
     );
 };
