@@ -5,6 +5,7 @@ import Overview from './LandingPageLayout/Overview/Overview';
 import AccomodationRoot from './LandingPageLayout/Accomodation/AccomodationRoot';
 import ExperienceRoot from './LandingPageLayout/Experience/ExperienceRoot';
 import ReviewsRoot from './LandingPageLayout/Reviews/ReviewsRoot';
+import ServicesRoot from './LandingPageLayout/Services/ServicesRoot';
 
 const RootPage = () => {
     return (
@@ -20,10 +21,11 @@ const RootPage = () => {
 
             <ExperienceRoot />
 
-            <div className='mt-[700px]'>
+            <div className='mt-[700px] mb-20'>
                 <ReviewsRoot />
-
             </div>
+
+            <ServicesRoot />
         </div>
     );
 };
