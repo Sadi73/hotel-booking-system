@@ -3,6 +3,7 @@ import Banner from './LandingPageLayout/BannerSection/Banner';
 import CheckAvailability from './LandingPageLayout/BannerSection/CheckAvailability';
 import Overview from './LandingPageLayout/Overview/Overview';
 import AccomodationRoot from './LandingPageLayout/Accomodation/AccomodationRoot';
+import ExperienceRoot from './LandingPageLayout/Experience/ExperienceRoot';
 
 const RootPage = () => {
     return (
@@ -15,6 +16,8 @@ const RootPage = () => {
             <Overview />
 
             <AccomodationRoot />
+
+            <ExperienceRoot />
         </div>
     );
 };
