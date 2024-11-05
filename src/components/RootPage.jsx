@@ -4,6 +4,7 @@ import CheckAvailability from './LandingPageLayout/BannerSection/CheckAvailabili
 import Overview from './LandingPageLayout/Overview/Overview';
 import AccomodationRoot from './LandingPageLayout/Accomodation/AccomodationRoot';
 import ExperienceRoot from './LandingPageLayout/Experience/ExperienceRoot';
+import ReviewsRoot from './LandingPageLayout/Reviews/ReviewsRoot';
 
 const RootPage = () => {
     return (
@@ -18,6 +19,11 @@ const RootPage = () => {
             <AccomodationRoot />
 
             <ExperienceRoot />
+
+            <div className='mt-[700px]'>
+                <ReviewsRoot />
+
+            </div>
         </div>
     );
 };
