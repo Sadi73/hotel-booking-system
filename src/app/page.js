@@ -2,7 +2,7 @@ import RootPage from "@/components/RootPage";
 
 export default function Home() {
   return (
-    <div className="">
+    <div className="font-serif">
       <RootPage />
     </div>
   );

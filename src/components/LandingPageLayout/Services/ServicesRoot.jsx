@@ -19,7 +19,7 @@ const ServicesRoot = () => {
         <div className='w-4/5 mx-auto grid grid-cols-2 gap-10 my-20'>
             <div>
                 <Image src={services1} alt='Service image 1' height={800}/>
-                <p>Inspired by our history, surrounded by nature to offer a different experience</p>
+                <p className='mt-10 text-xl font-mono'>Inspired by our history, surrounded by nature to offer a different experience</p>
             </div>
 
             <div>
@@ -29,11 +29,11 @@ const ServicesRoot = () => {
 
                 <div className='grid grid-cols-2 gap-5 my-10'>
                     {allServices.map(service =>
-                        <div key={service?.id} className='flex gap-5'>
+                        <div key={service?.id} className='flex items-center gap-5'>
                             <div>{service?.image}</div>
-                            <div>
-                                <h4>{service?.serviceName}</h4>
-                                <p>{service?.description}</p>
+                            <div className='space-y-2'>
+                                <h4 className='text-xl'>{service?.serviceName}</h4>
+                                <p className='text-[#53624e]'>{service?.description}</p>
                             </div>
                         </div>
                     )}

@@ -19,9 +19,9 @@ const Banner = () => {
 
 
                 <div className="h-full flex items-center justify-center text-white">
-                    <div className='max-w-[600px] text-center'>
-                        <h1 className="text-7xl font-bold">Boutique Private Island Resort</h1>
-                        <p className='text-xl'>The seaside haven of warmth, tranquility and restoration</p>
+                    <div className='w-2/5 text-center'>
+                        <h1 className="text-6xl font-bold leading-normal">Boutique Private Island Resort</h1>
+                        <p className='text-lg font-mono'>The seaside haven of warmth, tranquility and restoration</p>
                     </div>
                 </div>
             </div>

@@ -16,6 +16,7 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import Image from 'next/image';
 import traveler1 from '../../../assets/traveler1.jpg';
 import traveler2 from '../../../assets/traveler2.jpg';
+import { FaQuoteLeft, FaQuoteRight } from 'react-icons/fa6';
 
 const hotelReviews = [
     {
@@ -73,10 +74,10 @@ export default function ReviewCarousel() {
             <Swiper
                 spaceBetween={30}
                 centeredSlides={true}
-                autoplay={{
-                    delay: 2500,
-                    disableOnInteraction: false,
-                }}
+                // autoplay={{
+                //     delay: 3000,
+                //     disableOnInteraction: false,
+                // }}
                 pagination={{
                     clickable: true,
                 }}
@@ -87,15 +88,17 @@ export default function ReviewCarousel() {
                 {hotelReviews.map(eachReview =>
                     <SwiperSlide key={eachReview?.id}>
                         <div className="relative">
-                            <Image src={eachReview?.image} alt='traveler1 Image' width={1000} />
+                            <div className='flex justify-center'>
+                                <Image src={eachReview?.image} alt='traveler1 Image' height={600} />
+                            </div>
 
-                            <div className="absolute inset-0 bg-black bg-opacity-50">
+                            <div className="absolute inset-0 bg-black bg-opacity-60">
                                 <div className="h-full flex items-center justify-center text-white">
-                                    <div className='max-w-[60%] text-center'>
-                                        <p className='text-xl'>
+                                    <div className='max-w-[60%] text-center space-y-3'>
+                                        <p className='text-xl leading-normal w-2/3 mx-auto'>
                                             {eachReview?.reviewText}
                                         </p>
-                                        <h1 className="text-7xl font-bold">{eachReview?.reviewerName}</h1>
+                                        <h1 className="text-5xl font-bold flex justify-center"><FaQuoteLeft className='text-xl'/> {eachReview?.reviewerName} <FaQuoteRight className='text-xl'/></h1>
                                     </div>
                                 </div>
 

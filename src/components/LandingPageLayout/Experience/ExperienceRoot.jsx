@@ -8,7 +8,7 @@ import Image from 'next/image';
 const facilities = [
     {
         id: 1,
-        title: 'Spa & Wllness',
+        title: 'Spa & Wellness',
         description: 'Set in lush jungle, our modern spa embodies the calm of nature, offering extraordinary visual and auditory experiences that pamper and heal.',
         image: facilities1
     },
@@ -33,11 +33,11 @@ const ExperienceRoot = () => {
             <div className="relative">
                 <Image src={experience} alt='Experience Image' />
 
-                <div className="absolute inset-0 bg-black bg-opacity-50">
+                <div className="absolute inset-0 bg-black bg-opacity-60">
                     <div className="h-full flex items-center justify-center text-white">
-                        <div className='max-w-[60%] text-center'>
-                            <h1 className="text-7xl font-bold">One of the World's Most Desirable Locations</h1>
-                            <p className='text-xl'>
+                        <div className='w-2/4 text-center'>
+                            <h1 className="text-6xl font-semibold leading-normal">One of the World's Most Desirable Locations</h1>
+                            <p className='text-lg font-mono'>
                                 A superior, 5-star resort embodying the very best of Fiji Islands luxury, tranquility & sophistication.
                             </p>
                         </div>
@@ -49,11 +49,13 @@ const ExperienceRoot = () => {
             {/* Facilities Grid Without Overlay */}
             <div className='w-4/5 mx-auto grid grid-cols-3 gap-4 absolute top-3/4 left-40'>
                 {facilities.map(facility => (
-                    <div key={facility?.id}>
+                    <div key={facility?.id} className='space-y-3 text-center'>
                         <Image src={facility?.image} alt='Facility Image' height={400} width={400} />
-                        <p>{facility?.title}</p>
-                        <p>{facility?.description}</p>
-                        <button>Discover More</button>
+                        <p className='text-3xl'>{facility?.title}</p>
+                        <p className='leading-relaxed'>{facility?.description}</p>
+                        <div className='flex justify-center'>
+                            <button className='border-b border-[#ab916c]'>Discover More</button>
+                        </div>
                     </div>
                 ))}
             </div>
