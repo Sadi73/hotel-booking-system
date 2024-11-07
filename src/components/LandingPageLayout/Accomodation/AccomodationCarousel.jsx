@@ -61,13 +61,28 @@ export default function AccomodationCarousel() {
     return (
         <>
             <Swiper
-                slidesPerView={3}
-                spaceBetween={30}
                 pagination={{
                     clickable: true,
                 }}
                 modules={[Pagination]}
                 className="mySwiper"
+                breakpoints={{
+                    // when window width is >= 640px
+                    640: {
+                        slidesPerView: 1,
+                        spaceBetween: 20,
+                    },
+                    // when window width is >= 768px
+                    768: {
+                        slidesPerView: 2,
+                        spaceBetween: 30,
+                    },
+                    // when window width is >= 1024px
+                    1024: {
+                        slidesPerView: 3,
+                        spaceBetween: 40,
+                    },
+                }}
             >
                 {allRoomInfo.map(eachRoom =>
                     <SwiperSlide key={eachRoom?.id}><RoomCard roomDetails={eachRoom} /></SwiperSlide>

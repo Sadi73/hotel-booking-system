@@ -8,8 +8,8 @@ const RoomCard = ({ roomDetails }) => {
     return (
         <div className='space-y-3 font-serif'>
             <Image src={roomDetails?.image} alt='room image' width={400} height={500} />
-            <h1 className='text-3xl'>{roomDetails?.roomName}</h1>
-            <div className='flex justify-between'>
+            <h1 className='md:text-xl lg:text-3xl'>{roomDetails?.roomName}</h1>
+            <div className='flex flex-col xl:flex-row justify-between'>
                 <div className='flex items-center gap-2'>
                     <BsTextarea />
                     <p>{roomDetails?.area}</p>
@@ -23,7 +23,7 @@ const RoomCard = ({ roomDetails }) => {
                     <p>{roomDetails?.numberOfBeds} Kind Bed</p>
                 </div>
             </div>
-            <p>{roomDetails?.description}</p>
+            <p>{roomDetails?.description?.slice(0, 90)}...</p>
 
             <button className='border-b border-[#ab916c]'>Discover More </button>
 
