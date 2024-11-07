@@ -14,7 +14,7 @@ const Banner = () => {
             />
             {/* Black overlay */}
             <div className="absolute inset-0 bg-black bg-opacity-50">
-                {/* <Menubar /> */}
+                <Menubar />
 
                 <div className="h-full flex items-center justify-center text-white">
                     <div className='md:w-3/4 lg:w-3/5 xl:w-2/5 text-center space-y-3'>
