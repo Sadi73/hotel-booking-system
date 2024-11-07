@@ -5,19 +5,28 @@ import Image from 'next/image';
 const FooterRoot = () => {
     return (
         <div>
-            <div className='relative'>
+            <div className="relative w-full h-[300px]">
+                {/* Image with full width and cover */}
+                <Image
+                    src={banner}
+                    alt="footer image"
+                    layout="fill"
+                    objectFit="cover"
+                    className="absolute inset-0"
+                />
 
-                <Image src={banner} alt='footer image' height={300} />
+                {/* Dark overlay */}
+                <div className="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-around">
+                    <div className="w-2/5 text-center text-white px-4">
+                        <p>Stay Tuned with CozyStay</p>
+                        <h1 className="text-xl font-bold">Sign up for our newsletter to receive our news, deals, and special offers.</h1>
+                    </div>
 
-                <div className="absolute inset-0 bg-black bg-opacity-50">
-                    <div className="h-full flex items-center text-white">
-                        <div className='max-w-96'>
-                            <p className=''>Stay Tuned with CozyStay</p>
-                            <h1 className="text-xl font-bold">Sign up for our newsletter to receive our news, deals and special offers.</h1>
-                        </div>
+                    <div className='relative'>
+                        <input type="text"  placeholder='Your Message' className='p-3 bg-transparent text-white border rounded w-96'/>
+                        <button className='text-white text-xl opacity-80 absolute top-1 right-4 border-l pl-2 py-2'>Send</button>
                     </div>
                 </div>
-
             </div>
 
             <div className='bg-black py-5'>
