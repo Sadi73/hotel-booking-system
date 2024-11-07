@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link';
 import React, { useState, useRef, useEffect } from 'react';
 import { IoIosMenu } from "react-icons/io";
 
@@ -74,7 +75,7 @@ const Menubar = () => {
 
             {/* Logo and Login button */}
             <h1 className='uppercase text-3xl font-mono font-bold'>Cosystay</h1>
-            <button className='border px-5 py-2 font-mono'>Login</button>
+            <Link href='/login' className='border px-5 py-2 font-mono'>Login</Link>
         </div>
     );
 };
