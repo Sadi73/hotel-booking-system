@@ -3,9 +3,11 @@
 import Link from 'next/link';
 import React, { useState, useRef, useEffect } from 'react';
 import { IoIosMenu } from "react-icons/io";
+import BookRoomModal from '../BookRoomModal/BookRoomModal';
 
 const Menubar = () => {
     const [isDrawerVisible, setIsDrawerVisible] = useState(false);
+    const [isRoomBookModalVisible, setIsRoomBookModalVisible] = useState(false);
     const drawerRef = useRef(null);
 
     const handleClickOutside = (event) => {
@@ -34,6 +36,12 @@ const Menubar = () => {
 
     return (
         <div className='text-white flex items-center justify-between px-5 md:px-10 mt-5 pb-8 border-b relative'>
+
+            <BookRoomModal
+                isRoomBookModalVisible={isRoomBookModalVisible}
+                setIsRoomBookModalVisible={setIsRoomBookModalVisible}
+            />
+
             {/* Menu Icon */}
             <div
                 className='md:hidden'
@@ -53,6 +61,7 @@ const Menubar = () => {
                     <li>Stay</li>
                     <li>Rooms</li>
                     <li>Gallery</li>
+                    <li onClick={() => setIsRoomBookModalVisible(true)}>Book Now</li>
                 </ul>
 
                 {/* Close Button at Bottom */}
@@ -71,10 +80,14 @@ const Menubar = () => {
                 <li className='hover:border-b'><Link href='/'>Rooms</Link></li>
                 <li className='hover:border-b'><Link href='/'>Gallery</Link></li>
                 <li>
-                    <Link href='/' className='relative inline-block font-mono text-white hover:text-black px-5 py-2 overflow-hidden border group'>
+                    <button
+                        href='/'
+                        className='relative inline-block font-mono text-white hover:text-black px-5 py-2 overflow-hidden border group'
+                        onClick={() => setIsRoomBookModalVisible(true)}
+                    >
                         <span className='relative z-10 '>Book Now</span>
                         <span className='absolute inset-0 bg-white transition-transform duration-300 ease-in-out transform -translate-x-full group-hover:translate-x-0'></span>
-                    </Link>
+                    </button>
                 </li>
             </ul>
 
