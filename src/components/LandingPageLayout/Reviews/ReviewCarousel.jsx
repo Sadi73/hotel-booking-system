@@ -74,10 +74,9 @@ export default function ReviewCarousel() {
             <Swiper
                 spaceBetween={30}
                 centeredSlides={true}
-                // autoplay={{
-                //     delay: 3000,
-                //     disableOnInteraction: false,
-                // }}
+                autoplay={{
+                    delay: 3000,
+                }}
                 pagination={{
                     clickable: true,
                 }}
@@ -94,11 +93,11 @@ export default function ReviewCarousel() {
 
                             <div className="absolute inset-0 bg-black bg-opacity-60">
                                 <div className="h-full flex items-center justify-center text-white">
-                                    <div className='max-w-[60%] text-center space-y-3'>
-                                        <p className='text-xl leading-normal w-2/3 mx-auto'>
+                                    <div className='lg:w-4/5 xl:w-3/5 text-center space-y-3'>
+                                        <p className='md:text-xl leading-normal w-2/3 mx-auto'>
                                             {eachReview?.reviewText}
                                         </p>
-                                        <h1 className="text-5xl font-bold flex justify-center"><FaQuoteLeft className='text-xl'/> {eachReview?.reviewerName} <FaQuoteRight className='text-xl'/></h1>
+                                        <h1 className="md:text-2xl lg:text-4xl font-bold flex justify-center"><FaQuoteLeft className='md:text-xl'/> {eachReview?.reviewerName} <FaQuoteRight className='md:text-xl'/></h1>
                                     </div>
                                 </div>
 

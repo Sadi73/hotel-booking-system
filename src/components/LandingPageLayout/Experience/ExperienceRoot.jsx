@@ -35,8 +35,8 @@ const ExperienceRoot = () => {
 
                 <div className="absolute inset-0 bg-black bg-opacity-60">
                     <div className="h-full flex items-center justify-center text-white">
-                        <div className='w-2/4 text-center'>
-                            <h1 className="text-6xl font-semibold leading-normal">One of the World's Most Desirable Locations</h1>
+                        <div className='md:w-4/5 lg:w-2/4 text-center space-y-5'>
+                            <h1 className="text-xl md:text-4xl xl:text-5xl font-semibold">One of the World's Most Desirable Locations</h1>
                             <p className='text-lg font-mono'>
                                 A superior, 5-star resort embodying the very best of Fiji Islands luxury, tranquility & sophistication.
                             </p>
@@ -47,7 +47,7 @@ const ExperienceRoot = () => {
             </div>
 
             {/* Facilities Grid Without Overlay */}
-            <div className='w-4/5 mx-auto grid grid-cols-3 gap-4 absolute top-3/4 left-40'>
+            <div className='w-4/5 mx-auto grid md:grid-cols-3 gap-4 md:absolute top-3/4 xl:left-36 lg:left-24 md:left-20 mt-5 md:m-0'>
                 {facilities.map(facility => (
                     <div key={facility?.id} className='space-y-3 text-center'>
                         <Image src={facility?.image} alt='Facility Image' height={400} width={400} />

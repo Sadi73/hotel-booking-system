@@ -2,11 +2,12 @@ import React from 'react';
 import services1 from '../../../assets/services1.jpg';
 import services2 from '../../../assets/services2.jpg';
 import Image from 'next/image';
-import { FaCar, FaWifi } from 'react-icons/fa6';
+import { FaWifi } from 'react-icons/fa6';
 import { MdOutlineCleanHands, MdOutlineFreeBreakfast, MdOutlineLocalLaundryService, MdOutlinePool } from "react-icons/md";
+import { TfiCar } from "react-icons/tfi";
 
 const allServices = [
-    { id: 1, serviceName: 'Airport Pick-up Service', description: 'Lorem ipsum proin gravida velit auctor sde re sit amet space.', image: <FaCar /> },
+    { id: 1, serviceName: 'Airport Pick-up Service', description: 'Lorem ipsum proin gravida velit auctor sde re sit amet space.', image: <TfiCar /> },
     { id: 2, serviceName: 'Housekeeper Services', description: 'Lorem ipsum proin gravida velit auctor sde re sit amet space.', image: <MdOutlineCleanHands /> },
     { id: 3, serviceName: 'Wifi & Internet', description: 'Lorem ipsum proin gravida velit auctor sde re sit amet space.', image: <FaWifi /> },
     { id: 4, serviceName: 'Laundry Services', description: 'Lorem ipsum proin gravida velit auctor sde re sit amet space.', image: <MdOutlineLocalLaundryService /> },
@@ -18,7 +19,7 @@ const ServicesRoot = () => {
     return (
         <div className='w-4/5 mx-auto grid grid-cols-2 gap-10 my-20'>
             <div>
-                <Image src={services1} alt='Service image 1' height={800}/>
+                <Image src={services1} alt='Service image 1' height={800} />
                 <p className='mt-10 text-xl font-mono'>Inspired by our history, surrounded by nature to offer a different experience</p>
             </div>
 
