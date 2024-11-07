@@ -45,9 +45,8 @@ const Menubar = () => {
             {/* Drawer */}
             <div
                 ref={drawerRef}
-                className={`fixed top-0 left-0 h-full w-64 bg-gray-800  text-white transform ${
-                    isDrawerVisible ? 'translate-x-0' : '-translate-x-full'
-                } transition-transform duration-300 ease-in-out z-50 p-5 flex flex-col justify-between`}
+                className={`fixed top-0 left-0 h-full w-64 bg-gray-800  text-white transform ${isDrawerVisible ? 'translate-x-0' : '-translate-x-full'
+                    } transition-transform duration-300 ease-in-out z-50 p-5 flex flex-col justify-between`}
             >
                 <ul className='space-y-4 font-mono'>
                     <li>Home</li>
@@ -66,16 +65,29 @@ const Menubar = () => {
             </div>
 
             {/* Menu items for larger screens */}
-            <ul className='hidden text-md lg:text-lg font-mono md:flex gap-8'>
-                <li>Home</li>
-                <li>Stay</li>
-                <li>Rooms</li>
-                <li>Gallery</li>
+            <ul className='hidden text-md lg:text-lg font-mono md:flex items-center gap-8'>
+                <li className='hover:border-b'><Link href='/'>Home</Link></li>
+                <li className='hover:border-b'><Link href='/'>Stay</Link></li>
+                <li className='hover:border-b'><Link href='/'>Rooms</Link></li>
+                <li className='hover:border-b'><Link href='/'>Gallery</Link></li>
+                <li>
+                    <Link href='/' className='relative inline-block font-mono text-white hover:text-black px-5 py-2 overflow-hidden border group'>
+                        <span className='relative z-10 '>Book Now</span>
+                        <span className='absolute inset-0 bg-white transition-transform duration-300 ease-in-out transform -translate-x-full group-hover:translate-x-0'></span>
+                    </Link>
+                </li>
             </ul>
 
             {/* Logo and Login button */}
             <h1 className='uppercase text-3xl font-mono font-bold'>Cosystay</h1>
-            <Link href='/login' className='border px-5 py-2 font-mono'>Login</Link>
+
+            <Link
+                href='/login'
+                className='relative border px-5 py-2 font-mono text-white hover:text-black overflow-hidden group'
+            >
+                <span className='relative z-10'>Login</span>
+                <span className='absolute inset-0 bg-white transition-transform duration-300 ease-in-out transform -translate-x-full group-hover:translate-x-0'></span>
+            </Link>
         </div>
     );
 };
