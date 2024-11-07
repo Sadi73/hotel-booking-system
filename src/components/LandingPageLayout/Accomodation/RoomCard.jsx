@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 import { BsTextarea } from "react-icons/bs";
 import { GoPeople } from "react-icons/go";
@@ -6,9 +7,9 @@ import { IoBedOutline } from "react-icons/io5";
 
 const RoomCard = ({ roomDetails }) => {
     return (
-        <div className='space-y-3 font-serif'>
+        <div className='font-serif'>
             <Image src={roomDetails?.image} alt='room image' width={400} height={500} />
-            <h1 className='md:text-xl lg:text-3xl'>{roomDetails?.roomName}</h1>
+            <h1 className='md:text-xl lg:text-3xl my-3'>{roomDetails?.roomName}</h1>
             <div className='flex flex-col xl:flex-row justify-between'>
                 <div className='flex items-center gap-2'>
                     <BsTextarea />
@@ -23,9 +24,9 @@ const RoomCard = ({ roomDetails }) => {
                     <p>{roomDetails?.numberOfBeds} Kind Bed</p>
                 </div>
             </div>
-            <p>{roomDetails?.description?.slice(0, 90)}...</p>
+            <p className='my-3'>{roomDetails?.description?.slice(0, 90)}...</p>
 
-            <button className='border-b border-[#ab916c]'>Discover More </button>
+            <Link href={`room/${roomDetails?.id}`} className='border-b border-[#ab916c]'>Discover More </Link>
 
         </div>
     );

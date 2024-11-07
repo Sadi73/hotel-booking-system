@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.accomodation-slider {
+  height: 475px;
+}
+
 /* :root {
   --background: #ffffff;
   --foreground: #171717;

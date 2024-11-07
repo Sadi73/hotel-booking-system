@@ -65,7 +65,7 @@ export default function AccomodationCarousel() {
                     clickable: true,
                 }}
                 modules={[Pagination]}
-                className="mySwiper"
+                className="mySwiper accomodation-slider"
                 breakpoints={{
                     // when window width is >= 640px
                     640: {
