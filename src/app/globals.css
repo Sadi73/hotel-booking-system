@@ -6,6 +6,11 @@
   height: 475px;
 }
 
+.colored-bullet li::marker {
+  color: #dabb9c;
+  /* Tailwind's blue-500 color */
+}
+
 /* :root {
   --background: #ffffff;
   --foreground: #171717;
