@@ -22,7 +22,7 @@ const RootPage = () => {
 
             <ExperienceRoot />
 
-            <div className='mt-[700px] mb-20'>
+            <div className='mt-20 md:mt-[600px] xl:mt-[700px] mb-20'>
                 <ReviewsRoot />
             </div>
 

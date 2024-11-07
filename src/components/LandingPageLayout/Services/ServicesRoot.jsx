@@ -7,19 +7,23 @@ import { MdOutlineCleanHands, MdOutlineFreeBreakfast, MdOutlineLocalLaundryServi
 import { TfiCar } from "react-icons/tfi";
 
 const allServices = [
-    { id: 1, serviceName: 'Airport Pick-up Service', description: 'Lorem ipsum proin gravida velit auctor sde re sit amet space.', image: <TfiCar /> },
-    { id: 2, serviceName: 'Housekeeper Services', description: 'Lorem ipsum proin gravida velit auctor sde re sit amet space.', image: <MdOutlineCleanHands /> },
-    { id: 3, serviceName: 'Wifi & Internet', description: 'Lorem ipsum proin gravida velit auctor sde re sit amet space.', image: <FaWifi /> },
-    { id: 4, serviceName: 'Laundry Services', description: 'Lorem ipsum proin gravida velit auctor sde re sit amet space.', image: <MdOutlineLocalLaundryService /> },
-    { id: 5, serviceName: 'Breakfast in Bed', description: 'Lorem ipsum proin gravida velit auctor sde re sit amet space.', image: <MdOutlineFreeBreakfast /> },
-    { id: 6, serviceName: 'Swimming Pool', description: 'Lorem ipsum proin gravida velit auctor sde re sit amet space.', image: <MdOutlinePool /> },
+    { id: 1, serviceName: 'Airport Pick-up Service', description: 'Lorem ipsum proin gravida velit auctor sde re sit amet space.', image: <TfiCar className='text-2xl'/> },
+    { id: 2, serviceName: 'Housekeeper Services', description: 'Lorem ipsum proin gravida velit auctor sde re sit amet space.', image: <MdOutlineCleanHands  className='text-2xl'/> },
+    { id: 3, serviceName: 'Wifi & Internet', description: 'Lorem ipsum proin gravida velit auctor sde re sit amet space.', image: <FaWifi  className='text-2xl'/> },
+    { id: 4, serviceName: 'Laundry Services', description: 'Lorem ipsum proin gravida velit auctor sde re sit amet space.', image: <MdOutlineLocalLaundryService  className='text-2xl'/> },
+    { id: 5, serviceName: 'Breakfast in Bed', description: 'Lorem ipsum proin gravida velit auctor sde re sit amet space.', image: <MdOutlineFreeBreakfast  className='text-2xl'/> },
+    { id: 6, serviceName: 'Swimming Pool', description: 'Lorem ipsum proin gravida velit auctor sde re sit amet space.', image: <MdOutlinePool  className='text-2xl'/> },
 ]
 
 const ServicesRoot = () => {
     return (
-        <div className='w-4/5 mx-auto grid grid-cols-2 gap-10 my-20'>
-            <div>
-                <Image src={services1} alt='Service image 1' height={800} />
+        <div className='w-4/5 mx-auto grid lg:grid-cols-2 gap-10 my-20'>
+            <div className='w-full'>
+                <Image
+                    src={services1}
+                    alt='Service image 1'
+                    height={800}
+                />
                 <p className='mt-10 text-xl font-mono'>Inspired by our history, surrounded by nature to offer a different experience</p>
             </div>
 
@@ -30,7 +34,7 @@ const ServicesRoot = () => {
 
                 <div className='grid grid-cols-2 gap-5 my-10'>
                     {allServices.map(service =>
-                        <div key={service?.id} className='flex items-center gap-5'>
+                        <div key={service?.id} className='flex flex-col md:flex-row items-center gap-5'>
                             <div>{service?.image}</div>
                             <div className='space-y-2'>
                                 <h4 className='text-xl'>{service?.serviceName}</h4>
