@@ -1,4 +1,4 @@
-import CloseIcon from '@mui/icons-material/Close';
+import { MdOutlineClose } from "react-icons/md";
 import Dialog from '@mui/material/Dialog';
 import Slide from '@mui/material/Slide';
 import Image from 'next/image';
@@ -36,7 +36,7 @@ export default function BookRoomModal({ isRoomBookModalVisible, setIsRoomBookMod
                         {/* Black overlay */}
                         <div className="absolute inset-0 bg-black bg-opacity-70 ">
                             <div className='flex justify-end pr-5 pt-5 '>
-                                <button className='text-white' onClick={handleClose}>  <CloseIcon /></button>
+                                <button className='text-white' onClick={handleClose}>  <MdOutlineClose /></button>
                             </div>
 
                             <div className='flex items-center justify-center md:h-3/4'>
