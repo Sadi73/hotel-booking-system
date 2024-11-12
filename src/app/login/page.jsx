@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useRouter } from 'next/navigation';
+import Config from '@/Config';
 
 const page = () => {
     const router = useRouter();
@@ -39,7 +40,7 @@ const page = () => {
                         })}
                         onSubmit={(value) => {
 
-                            fetch('http://localhost:4000/login', {
+                            fetch(`${Config.baseApi}/login`, {
                                 method: 'POST',
                                 headers: {
                                     'Content-Type': 'application/json'
@@ -49,7 +50,8 @@ const page = () => {
                                 .then(res => res.json())
                                 .then(data => {
                                     console.log(data)
-                                    if (data?.success ) {
+                                    if (data?.success) {
+                                        localStorage.setItem('User Logged In', true)
                                         router.push('/');
                                     } else {
                                         setErrorMessage(data?.message)

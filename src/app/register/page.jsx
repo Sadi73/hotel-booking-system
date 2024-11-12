@@ -39,7 +39,7 @@ const page = () => {
                         })}
                         onSubmit={(value) => {
 
-                            fetch('http://localhost:4000/register', {
+                            fetch(`${Config.baseApi}/register`, {
                                 method: 'POST',
                                 headers: {
                                     'Content-Type': 'application/json'

@@ -16,7 +16,10 @@ import { SiPetsathome } from "react-icons/si";
 
 
 
-const page = () => {
+const page = async ({ params }) => {
+    // const { roomId } = await params
+    // console.log(roomId)
+
     return (
         <div className='w-4/5 mx-auto grid grid-cols-12 gap-5 mt-10'>
             <div className='col-span-8'>
@@ -145,16 +148,16 @@ const page = () => {
             <div className='col-span-4 shadow-2xl py-5 px-10 h-96'>
                 <h1>Reserve</h1>
                 <div>
-                    <input type="text" className='border border-[#dabb9c] p-2 w-full mb-2' placeholder='Check In'/>
+                    <input type="text" className='border border-[#dabb9c] p-2 w-full mb-2' placeholder='Check In' />
                 </div>
                 <div>
-                    <input type="text" className='border border-[#dabb9c] p-2 w-full mb-2' placeholder='Check Out'/>
+                    <input type="text" className='border border-[#dabb9c] p-2 w-full mb-2' placeholder='Check Out' />
                 </div>
                 <div>
-                    <input type="text" className='border border-[#dabb9c] p-2 w-full mb-2' placeholder='Rooms'/>
+                    <input type="text" className='border border-[#dabb9c] p-2 w-full mb-2' placeholder='Rooms' />
                 </div>
                 <div>
-                    <input type="text" className='border border-[#dabb9c] p-2 w-full mb-2' placeholder='Adults'/>
+                    <input type="text" className='border border-[#dabb9c] p-2 w-full mb-2' placeholder='Adults' />
                 </div>
 
                 <button className='bg-black text-white w-full py-3'>Book Your Stay Now</button>

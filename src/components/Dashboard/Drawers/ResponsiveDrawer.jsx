@@ -20,10 +20,23 @@ import Typography from '@mui/material/Typography';
 import Link from 'next/link';
 
 import './drawerStyles.css'
+import { usePathname } from 'next/navigation';
+import { VscDashboard } from 'react-icons/vsc';
+import { HiOutlineBuildingOffice } from "react-icons/hi2";
+import { SlCalender, SlPeople } from "react-icons/sl";
+
+const adminMenu = [
+    { key: 'dashboard', menuText: 'Dashboard', path: '/admin/dashboard', icon: <VscDashboard /> },
+    { key: 'manage-rooms', menuText: 'Manage Rooms', path: '/admin/manage-rooms', icon: <HiOutlineBuildingOffice /> },
+    { key: 'reservations', menuText: 'Reservations', path: '/admin/reservations', icon: <SlCalender /> },
+    { key: 'staff-section', menuText: 'Staff Section', path: '/admin/staff-section', icon: <SlPeople /> },
+]
 
 const drawerWidth = 240;
 
 function ResponsiveDrawer({ children }) {
+    const pathname = usePathname();
+
     const [mobileOpen, setMobileOpen] = React.useState(false);
     const [isClosing, setIsClosing] = React.useState(false);
 
@@ -43,6 +56,8 @@ function ResponsiveDrawer({ children }) {
         }
     };
 
+    console.log(pathname.split('/')[2])
+
     const drawer = (
         <div>
             <Toolbar >
@@ -52,18 +67,40 @@ function ResponsiveDrawer({ children }) {
             <Divider />
 
             <List>
-                {['Dashboard', 'Manage Rooms', 'Reservations', 'Staffs'].map((text, index) => (
-                    <ListItem key={text} disablePadding>
-                        <ListItemButton>
-                            <Link href='/admin/manage-rooms' className='flex items-center'>
+                {adminMenu.map((menuItem, index) => (
+                    <ListItem key={index} disablePadding>
+                        <ListItemButton
+                            style={{
+                                boxShadow: pathname.split('/')[2] === menuItem?.key
+                                    ? '0 -4px 6px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.1)'
+                                    : 'none'
+                            }}
+                            className="flex items-center"
+                        >
+                            <Link href={menuItem?.path} className="flex items-center">
                                 <ListItemIcon>
-                                    <HiInboxIn />
+                                    {menuItem?.icon}
                                 </ListItemIcon>
-                                <ListItemText primary={text} />
+                                <ListItemText primary={menuItem?.menuText} />
                             </Link>
                         </ListItemButton>
                     </ListItem>
                 ))}
+            </List>
+
+            <Divider className='my-10'/>
+
+            <List>
+                <ListItem disablePadding>
+                    <ListItemButton className="flex items-center">
+                        <Link href='/' className="flex items-center">
+                            <ListItemIcon>
+                                <HiInboxIn />
+                            </ListItemIcon>
+                            <ListItemText primary='Landing Page' />
+                        </Link>
+                    </ListItemButton>
+                </ListItem>
             </List>
         </div>
     );
@@ -89,7 +126,7 @@ function ResponsiveDrawer({ children }) {
                         <IoMdMenu />
                     </IconButton>
                     <Typography variant="h6" noWrap component="div">
-                        Responsive drawer
+                        {adminMenu.find(menuItem => menuItem?.key === pathname.split('/')[2])?.menuText}
                     </Typography>
                 </Toolbar>
             </AppBar>
