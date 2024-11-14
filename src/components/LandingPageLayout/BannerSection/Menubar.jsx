@@ -1,11 +1,14 @@
 'use client'
 
 import Link from 'next/link';
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useContext } from 'react';
 import { IoIosMenu } from "react-icons/io";
 import BookRoomModal from '../BookRoomModal/BookRoomModal';
+import { authContext } from '@/app/Providers/AuthProvider';
+import AccountMenu from './AccountMenu';
 
 const Menubar = () => {
+    const { isAuthenticated } = useContext(authContext)
     const [isDrawerVisible, setIsDrawerVisible] = useState(false);
     const [isRoomBookModalVisible, setIsRoomBookModalVisible] = useState(false);
     const drawerRef = useRef(null);
@@ -94,13 +97,17 @@ const Menubar = () => {
             {/* Logo and Login button */}
             <h1 className='uppercase text-3xl font-mono font-bold'>Cosystay</h1>
 
-            <Link
-                href='/login'
-                className='relative border px-5 py-2 font-mono text-white hover:text-black overflow-hidden group'
-            >
-                <span className='relative z-10'>Login</span>
-                <span className='absolute inset-0 bg-white transition-transform duration-300 ease-in-out transform -translate-x-full group-hover:translate-x-0'></span>
-            </Link>
+            {!isAuthenticated ?
+                <Link
+                    href='/login'
+                    className='relative border px-5 py-2 font-mono text-white hover:text-black overflow-hidden group'
+                >
+                    <span className='relative z-10'>Login</span>
+                    <span className='absolute inset-0 bg-white transition-transform duration-300 ease-in-out transform -translate-x-full group-hover:translate-x-0'></span>
+                </Link>
+                : <AccountMenu />
+
+            }
         </div>
     );
 };

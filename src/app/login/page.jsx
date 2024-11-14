@@ -49,9 +49,14 @@ const page = () => {
                             })
                                 .then(res => res.json())
                                 .then(data => {
-                                    console.log(data)
+                                    localStorage.removeItem('authInfo');
                                     if (data?.success) {
-                                        localStorage.setItem('User Logged In', true)
+                                        const userInfo = {
+                                            userName: data?.user?.name,
+                                            email: data?.user?.email,
+                                            token: data?.token
+                                        }
+                                        localStorage.setItem('authInfo', JSON.stringify(userInfo))
                                         router.push('/');
                                     } else {
                                         setErrorMessage(data?.message)

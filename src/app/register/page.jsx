@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useRouter } from 'next/navigation';
+import Config from '@/Config';
 
 
 const page = () => {
@@ -48,7 +49,6 @@ const page = () => {
                             })
                                 .then(res => res.json())
                                 .then(data => {
-                                    console.log(data)
                                     if (data?.status === 201) {
                                         router.push('/login');
                                     } else {

@@ -56,8 +56,6 @@ function ResponsiveDrawer({ children }) {
         }
     };
 
-    console.log(pathname.split('/')[2])
-
     const drawer = (
         <div>
             <Toolbar >
