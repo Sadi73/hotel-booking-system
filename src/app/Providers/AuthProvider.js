@@ -6,8 +6,12 @@ export const authContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
 
-    const authInfo = JSON.parse(localStorage.getItem('authInfo'));
+    const [authInfo, setAuthInfo] = useState(null);
     const [isAuthenticated, setIsAuthenticated] = useState(authInfo ? true : false);
+
+    useEffect(() => {
+        setAuthInfo(JSON.parse(localStorage.getItem('authInfo')))
+    }, [])
 
     return (
         <authContext.Provider value={{ authInfo, isAuthenticated, setIsAuthenticated }}>
