@@ -56,10 +56,10 @@ const data = [
 
 const RevenueSummary = () => {
     return (
-        <div className='min-h-96 border rounded-lg shadow-xl p-5'>
+        <div className='h-96 border rounded-lg shadow-xl p-5'>
             <h2 className='font-bold mb-5'>Total Revenue</h2>
 
-            <ResponsiveContainer width="100%" height="100%">
+            <ResponsiveContainer width="100%" height="90%">
                 <BarChart
                     width={500}
                     height={300}

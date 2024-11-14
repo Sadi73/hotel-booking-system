@@ -59,7 +59,7 @@ function ResponsiveDrawer({ children }) {
     const drawer = (
         <div>
             <Toolbar >
-                <p className='text-3xl'>Hotel Book</p>
+                <p className='text-xl font-bold text-gray-500'>Dream View Hotel</p>
             </Toolbar >
 
             <Divider />
