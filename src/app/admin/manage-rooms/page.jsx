@@ -1,39 +1,10 @@
 'use client'
 
 import React, { useEffect, useState } from 'react';
-import room1 from '../../../assets/room1.jpg';
-import room2 from '../../../assets/room2.jpg';
-import room3 from '../../../assets/room3.jpg';
-import room4 from '../../../assets/room4.jpg';
 import Image from 'next/image';
 import { CiEdit } from "react-icons/ci";
 import { IoIosPeople } from 'react-icons/io';
 import Config from '@/Config';
-
-
-const dummyRoomList = [
-    {
-        id: 1,
-        picture: room1,
-        roomName: 'Premium Suit',
-        capacity: 3,
-        isRoomAvailable: true
-    },
-    {
-        id: 2,
-        picture: room2,
-        roomName: 'Couple Delux',
-        capacity: 2,
-        isRoomAvailable: false
-    },
-    {
-        id: 3,
-        picture: room3,
-        roomName: 'Personal Banglow',
-        capacity: 10,
-        isRoomAvailable: true
-    },
-]
 
 const page = () => {
     const [allRooms, setAllRooms] = useState([]);
