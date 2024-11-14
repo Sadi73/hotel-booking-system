@@ -1,4 +1,5 @@
 import "./globals.css";
+import AuthProvider from "./Providers/AuthProvider";
 
 export const metadata = {
   title: "Create Next App",
@@ -9,7 +10,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body cz-shortcut-listen="true">
-        {children}
+        <AuthProvider>
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );

@@ -21,12 +21,12 @@ const page = async ({ params }) => {
     // console.log(roomId)
 
     return (
-        <div className='w-4/5 mx-auto grid grid-cols-12 gap-5 mt-10'>
+        <div className='w-4/5 mx-auto md:grid grid-cols-12 gap-5 mt-10'>
             <div className='col-span-8'>
                 <h1 className='md:text-xl lg:text-3xl my-3'>Premier Oceanview Villa</h1>
                 <p>Private Pool / Ocean View / Single Level</p>
 
-                <div className='flex flex-col xl:flex-row gap-10 my-3'>
+                <div className='flex gap-2 sm:gap-5 md:gap-10 my-3'>
                     <div className='flex items-center gap-2'>
                         <BsTextarea />
                         <p>800 sq m</p>
@@ -37,7 +37,7 @@ const page = async ({ params }) => {
                     </div>
                     <div className='flex items-center gap-2'>
                         <IoBedOutline />
-                        <p>1 Kind Bed</p>
+                        <p>1 King Bed</p>
                     </div>
                 </div>
 
@@ -45,9 +45,9 @@ const page = async ({ params }) => {
 
                 <p>Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. </p>
 
-                <div className='my-5'>
+                <div className='my-10'>
                     <h3 className='text-xl font-mono mb-3'>Family-friendly Amenities</h3>
-                    <div className='grid grid-cols-3 gap-5'>
+                    <div className='grid lg:grid-cols-3 gap-5'>
                         <div className='bg-[#FAF7F4]  py-8 flex items-center justify-center gap-2'>
                             <TbSwimming className='text-4xl text-[#dabb9c]' />
                             <p>Kids Swimming Pool</p>
@@ -129,7 +129,7 @@ const page = async ({ params }) => {
                     </div>
                 </div>
 
-                <div className='my-5'>
+                <div className='my-10'>
                     <h3 className='text-xl font-mono my-3'>What’s included in this suite?</h3>
                     <ul className='colored-bullet list-disc pl-5 space-y-5'>
                         <li>Private balcony</li>
@@ -145,7 +145,7 @@ const page = async ({ params }) => {
                 </div>
             </div>
 
-            <div className='col-span-4 shadow-2xl py-5 px-10 h-96'>
+            <div className='col-span-4 shadow-2xl rounded-xl py-5 px-5 lg:px-10 max-h-80'>
                 <h1>Reserve</h1>
                 <div>
                     <input type="text" className='border border-[#dabb9c] p-2 w-full mb-2' placeholder='Check In' />
