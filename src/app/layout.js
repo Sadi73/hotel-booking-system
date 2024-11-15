@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body cz-shortcut-listen="true">
         <AuthProvider>
-          {!(pathname.split('/')?.includes('login') || pathname.split('/')?.includes('register')) &&
+          {!(pathname.split('/')?.includes('login') || pathname.split('/')?.includes('register') || pathname.split('/')?.includes('admin')) &&
             <div className='relative'>
               <Banner />
               {pathname === '/' && <CheckAvailability />}
