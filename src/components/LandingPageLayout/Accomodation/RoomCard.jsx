@@ -8,12 +8,12 @@ import { IoBedOutline } from "react-icons/io5";
 const RoomCard = ({ roomDetails }) => {
     return (
         <div className='font-serif'>
-            <Image src={roomDetails?.coverImage} alt='room image' width={400} height={500} />
+            <Image src={roomDetails?.coverImage} alt='room image' width={400} height={500} className='h-64'/>
             <h1 className='md:text-xl lg:text-3xl my-3'>{roomDetails?.roomName}</h1>
             <div className='flex flex-col xl:flex-row justify-between'>
                 <div className='flex items-center gap-2'>
                     <BsTextarea />
-                    <p>{roomDetails?.roomSize}</p>
+                    <p>{roomDetails?.roomSize} sq m</p>
                 </div>
                 <div className='flex items-center gap-2'>
                     <GoPeople />

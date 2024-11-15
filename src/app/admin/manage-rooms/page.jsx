@@ -43,7 +43,7 @@ const page = () => {
                             </div>
 
                             {
-                                eachSpace?.isRoomAvailable ?
+                                eachSpace?.isRoomAvailable === 'true' ?
                                     <p className="text-[#0D9344]">
                                         ● Free Now
                                     </p>
