@@ -5,8 +5,11 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import BasicDatePicker from '../../MUI/BasicDatePicker/BasicDatePicker';
 import BasicPopover from '@/components/MUI/BasicPopover/BasicPopover';
 import moment from 'moment';
+import { useRouter } from 'next/navigation';
 
 const CheckAvailability = () => {
+
+    const router = useRouter();
 
     return (
         <Formik
@@ -18,6 +21,7 @@ const CheckAvailability = () => {
             }}
             onSubmit={(values) => {
                 console.log('Form submitted with:', values);
+                router.push('/room-availability')
             }}
         >
             {({ values, setFieldValue }) => (

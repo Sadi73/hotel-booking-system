@@ -26,7 +26,7 @@ const page = () => {
                     <div key={eachSpace?._id} className='shadow-xl p-2 border rounded-lg space-y-2' >
                         <Image src={eachSpace?.coverImage}
                             alt='room-image'
-                            className='rounded-lg'
+                            className='rounded-lg w-full h-48'
                             width={300}
                             height={300}
                         />
