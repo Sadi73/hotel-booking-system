@@ -27,7 +27,7 @@ const AvailableRoomCard = ({ roomDetails }) => {
                 </div>
                 <p className='my-3'>{roomDetails?.description?.slice(0, 90)}...</p>
 
-                <Link href={`room/${roomDetails?._id}`} className='border-b border-[#ab916c]'>Discover More </Link>
+                <Link href={`room/${roomDetails?._id}`} className='border-b border-[#ab916c] hover:border-0'>Discover More </Link>
             </div>
 
         </div>

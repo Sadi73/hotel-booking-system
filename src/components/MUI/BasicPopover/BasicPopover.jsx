@@ -41,11 +41,13 @@ const BasicPopover = ({ label, subLabel, values, setFieldValue }) => {
                         <div className='flex justify-between'>
                             <label htmlFor="">Adults</label>
                             <div className='flex gap-5'>
-                                <button onClick={() => {
-                                    const dummyGuests = { ...values?.guests };
-                                    dummyGuests.adult = dummyGuests.adult - 1;
-                                    setFieldValue('guests', dummyGuests)
-                                }}>-</button>
+                                <button
+                                    disabled={values?.guests?.adult === 1}
+                                    onClick={() => {
+                                        const dummyGuests = { ...values?.guests };
+                                        dummyGuests.adult = dummyGuests.adult - 1;
+                                        setFieldValue('guests', dummyGuests)
+                                    }}>-</button>
 
                                 <span>{values?.guests?.adult}</span>
 
@@ -59,11 +61,13 @@ const BasicPopover = ({ label, subLabel, values, setFieldValue }) => {
                         <div className='flex justify-between'>
                             <label htmlFor="">Children</label>
                             <div className='flex gap-5'>
-                                <button onClick={() => {
-                                    const dummyGuests = { ...values?.guests };
-                                    dummyGuests.child = dummyGuests.child - 1;
-                                    setFieldValue('guests', dummyGuests)
-                                }}>-</button>
+                                <button
+                                    disabled={values?.guests?.child === 0}
+                                    onClick={() => {
+                                        const dummyGuests = { ...values?.guests };
+                                        dummyGuests.child = dummyGuests.child - 1;
+                                        setFieldValue('guests', dummyGuests)
+                                    }}>-</button>
                                 <span>{values?.guests?.child}</span>
                                 <button onClick={() => {
                                     const dummyGuests = { ...values?.guests };
@@ -77,9 +81,11 @@ const BasicPopover = ({ label, subLabel, values, setFieldValue }) => {
                         <div className='flex justify-between'>
                             <label htmlFor="">Rooms</label>
                             <div className='flex gap-5'>
-                                <button onClick={() => {
-                                    setFieldValue('noOfRooms', values?.noOfRooms - 1)
-                                }}>-</button>
+                                <button
+                                    disabled={values?.noOfRooms === 1}
+                                    onClick={() => {
+                                        setFieldValue('noOfRooms', values?.noOfRooms - 1)
+                                    }}>-</button>
                                 <span>{values?.noOfRooms}</span>
                                 <button onClick={() => {
                                     setFieldValue('noOfRooms', values?.noOfRooms + 1)

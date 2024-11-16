@@ -1,0 +1,10 @@
+.accomodation-slider{
+    height: 540px;
+}
+
+@media only screen and (min-width: 1200px) {
+    .accomodation-slider{
+        height: 500px;
+    }
+}
+

@@ -1,6 +1,10 @@
 'use client';
 
+import BasicDatePicker from '@/components/MUI/BasicDatePicker/BasicDatePicker';
+import BasicPopover from '@/components/MUI/BasicPopover/BasicPopover';
 import Config from '@/Config';
+import { Form, Formik } from 'formik';
+import moment from 'moment';
 import { use, useEffect, useState } from 'react';
 import { BsTextarea } from "react-icons/bs";
 import { GoPeople } from "react-icons/go";
@@ -23,12 +27,12 @@ const page = ({ params }) => {
     }, []);
 
     return (
-        <div className='w-4/5 mx-auto md:grid grid-cols-12 gap-5 mt-10'>
+        <div className='w-4/5 mx-auto lg:grid grid-cols-12 gap-5 mt-10'>
             <div className='col-span-8'>
                 <h1 className='md:text-xl lg:text-3xl my-3'>{roomDetails?.roomName}</h1>
                 <p>Private Pool / Ocean View / Single Level</p>
 
-                <div className='flex gap-2 sm:gap-5 md:gap-10 my-3'>
+                <div className='flex flex-col md:flex-row gap-2 sm:gap-5 md:gap-10 my-3'>
                     <div className='flex items-center gap-2'>
                         <BsTextarea />
                         <p>{roomDetails?.roomSize} sq m</p>
@@ -95,22 +99,64 @@ const page = ({ params }) => {
                 </div>
             </div>
 
-            <div className='col-span-4 shadow-2xl rounded-xl py-5 px-5 lg:px-10 max-h-80'>
-                <h1>Reserve</h1>
-                <div>
-                    <input type="text" className='border border-[#dabb9c] p-2 w-full mb-2' placeholder='Check In' />
-                </div>
-                <div>
-                    <input type="text" className='border border-[#dabb9c] p-2 w-full mb-2' placeholder='Check Out' />
-                </div>
-                <div>
-                    <input type="text" className='border border-[#dabb9c] p-2 w-full mb-2' placeholder='Rooms' />
-                </div>
-                <div>
-                    <input type="text" className='border border-[#dabb9c] p-2 w-full mb-2' placeholder='Adults' />
+            <div className='col-span-4 shadow-2xl rounded-xl py-5 px-5 lg:px-10 bg-black bg-opacity-30 h-[500px]'>
+                <div className='flex lg:flex-col xl:flex-row justify-between items-center my-5'>
+                    <h1 className='uppercase text-2xl font-mono'>Reserve</h1>
+                    <p>From <span className='font-bold'>$399</span>/night</p>
                 </div>
 
-                <button className='bg-black text-white w-full py-3'>Book Your Stay Now</button>
+                <Formik
+                    initialValues={{
+                        checkInDate: null,
+                        checkOutDate: null,
+                        noOfRooms: 1,
+                        guests: { adult: 1, child: 1 },
+                    }}
+                    onSubmit={(values) => {
+                        console.log('Form submitted with:', values);
+                        // router.push('/room-availability')
+                    }}
+                >
+                    {({ values, setFieldValue }) => (
+                        <Form className='space-y-5'>
+                            {/* Check-in Date */}
+                            <BasicDatePicker
+                                label="Check In"
+                                selectedDate={values.checkInDate ? moment(values.checkInDate) : null}
+                                setSelectedDate={(date) => setFieldValue('checkInDate', moment(date).format('YYYY-MM-DD'))}
+                            />
+
+                            {/* Check-out Date */}
+                            <BasicDatePicker
+                                label="Check Out"
+                                selectedDate={values.checkOutDate ? moment(values.checkOutDate) : null}
+                                setSelectedDate={(date) => setFieldValue('checkOutDate', moment(date).format('YYYY-MM-DD'))}
+                            />
+
+                            {/* Number of Rooms */}
+                            <BasicPopover
+                                label="Rooms"
+                                subLabel={`${values.noOfRooms} Room`}
+                                values={values}
+                                setFieldValue={setFieldValue}
+                            />
+
+                            {/* Guests */}
+                            <BasicPopover
+                                label="Guests"
+                                subLabel={`${values.guests.adult} Adult ${values.guests.child} Child`}
+                                values={values}
+                                setFieldValue={setFieldValue}
+                            />
+
+                            {/* Submit Button */}
+
+                            <button type="submit" className='bg-black text-white w-full py-3'>Book Your Stay Now</button>
+                        </Form>
+                    )}
+                </Formik>
+
+
             </div>
         </div>
     );

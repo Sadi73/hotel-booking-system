@@ -54,7 +54,7 @@ const ExperienceRoot = () => {
                         <p className='text-3xl'>{facility?.title}</p>
                         <p className='leading-relaxed'>{facility?.description}</p>
                         <div className='flex justify-center'>
-                            <button className='border-b border-[#ab916c]'>Discover More</button>
+                            <button className='border-b border-[#ab916c] hover:border-0'>Discover More</button>
                         </div>
                     </div>
                 ))}
