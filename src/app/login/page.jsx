@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import hotelImage from '../../assets/hotel1.jpg';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -8,9 +8,11 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useRouter } from 'next/navigation';
 import Config from '@/Config';
+import { authContext } from '../Providers/AuthProvider';
 
 const page = () => {
     const router = useRouter();
+    const { setIsAuthenticated } = useContext(authContext);
     const [errorMessage, setErrorMessage] = useState(null);
 
     return (
@@ -56,7 +58,8 @@ const page = () => {
                                             email: data?.user?.email,
                                             token: data?.token
                                         }
-                                        localStorage.setItem('authInfo', JSON.stringify(userInfo))
+                                        localStorage.setItem('authInfo', JSON.stringify(userInfo));
+                                        setIsAuthenticated(true);
                                         router.push('/');
                                     } else {
                                         setErrorMessage(data?.message)
