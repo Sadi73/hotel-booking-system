@@ -9,12 +9,15 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import BasicDatePicker from "@/components/MUI/BasicDatePicker/BasicDatePicker";
 import BasicPopover from "@/components/MUI/BasicPopover/BasicPopover";
 import moment from "moment";
+import { useRouter } from "next/navigation";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
 
 export default function BookRoomModal({ isRoomBookModalVisible, setIsRoomBookModalVisible }) {
+
+    const router = useRouter();
 
     const handleClose = () => {
         setIsRoomBookModalVisible(false);
@@ -56,8 +59,8 @@ export default function BookRoomModal({ isRoomBookModalVisible, setIsRoomBookMod
                                             guests: { adult: 1, child: 1 },
                                         }}
                                         onSubmit={(values) => {
-                                            console.log('Form submitted with:', values);
-                                            // router.push('/room-availability')
+                                            router.push('/room-availability');
+                                            handleClose();
                                         }}
                                     >
                                         {({ values, setFieldValue }) => (
@@ -93,7 +96,7 @@ export default function BookRoomModal({ isRoomBookModalVisible, setIsRoomBookMod
                                                 />
 
                                                 {/* Submit Button */}
-                                                <button className='bg-[#B99D75] w-full rounded-md col-span-2  py-3 my-5'>Check Availability</button>
+                                                <button type="submit" className='bg-[#B99D75] w-full rounded-md col-span-2  py-3 my-5'>Check Availability</button>
 
                                             </Form>
                                         )}

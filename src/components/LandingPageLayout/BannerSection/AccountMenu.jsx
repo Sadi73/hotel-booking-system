@@ -14,7 +14,7 @@ import Link from 'next/link';
 import { authContext } from '@/app/Providers/AuthProvider';
 
 export default function AccountMenu() {
-    const { setIsAuthenticated } = React.useContext(authContext)
+    const { authInfo, setIsAuthenticated } = React.useContext(authContext)
     const [anchorEl, setAnchorEl] = React.useState(null);
 
     const open = Boolean(anchorEl);
@@ -35,7 +35,7 @@ export default function AccountMenu() {
     return (
         <React.Fragment>
             <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-                <Typography sx={{ minWidth: 100 }}>Sadi M. Tanzim</Typography>
+                <Typography sx={{}}>{authInfo?.userName}</Typography>
 
                 <IconButton
                     onClick={handleClick}

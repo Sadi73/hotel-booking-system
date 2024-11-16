@@ -85,7 +85,7 @@ const page = () => {
                 </Formik>
             </div>
 
-            <div className='col-span-7 space-y-5'>
+            <div className='col-span-7 space-y-5 mt-10 lg:mt-0'>
                 {allAvailableRooms.map(room => <AvailableRoomCard key={room?._id} roomDetails={room} />)}
             </div>
         </div>
