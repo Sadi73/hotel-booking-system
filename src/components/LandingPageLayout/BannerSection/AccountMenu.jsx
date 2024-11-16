@@ -11,7 +11,7 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import { CiLogout } from "react-icons/ci";
 import Link from 'next/link';
-import { authContext } from '@/app/Providers/AuthProvider';
+import { authContext } from '@/Providers/AuthProvider';
 
 export default function AccountMenu() {
     const { authInfo, setIsAuthenticated } = React.useContext(authContext)

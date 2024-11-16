@@ -4,7 +4,7 @@ import Link from 'next/link';
 import React, { useState, useRef, useEffect, useContext } from 'react';
 import { IoIosMenu } from "react-icons/io";
 import BookRoomModal from '../BookRoomModal/BookRoomModal';
-import { authContext } from '@/app/Providers/AuthProvider';
+import { authContext } from '@/Providers/AuthProvider';
 import AccountMenu from './AccountMenu';
 
 const Menubar = () => {

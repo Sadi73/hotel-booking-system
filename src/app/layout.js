@@ -2,7 +2,7 @@
 
 import Banner from "@/components/LandingPageLayout/BannerSection/Banner";
 import "./globals.css";
-import AuthProvider from "./Providers/AuthProvider";
+import AuthProvider from "@/Providers/AuthProvider";
 import CheckAvailability from "@/components/LandingPageLayout/BannerSection/CheckAvailability";
 import { usePathname } from "next/navigation";
 

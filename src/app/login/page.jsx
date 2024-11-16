@@ -8,7 +8,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useRouter } from 'next/navigation';
 import Config from '@/Config';
-import { authContext } from '../Providers/AuthProvider';
+import { authContext } from '@/Providers/AuthProvider';
 
 const page = () => {
     const router = useRouter();

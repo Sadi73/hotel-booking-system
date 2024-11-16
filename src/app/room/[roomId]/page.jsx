@@ -1,6 +1,6 @@
 'use client';
 
-import { authContext } from '@/app/Providers/AuthProvider';
+import { authContext } from '@/Providers/AuthProvider';
 import BasicDatePicker from '@/components/MUI/BasicDatePicker/BasicDatePicker';
 import BasicPopover from '@/components/MUI/BasicPopover/BasicPopover';
 import Config from '@/Config';
