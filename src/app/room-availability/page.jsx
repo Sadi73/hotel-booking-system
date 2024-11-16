@@ -21,7 +21,14 @@ const page = () => {
 
     return (
         <div className='w-[90%] md:w-4/5 lg:w-[90%] xl:w-4/5 mx-auto lg:grid grid-cols-12 gap-5 my-10'>
-            <div className='col-span-5 shadow-lg p-5 h-[420px]'>
+            <div
+                className='col-span-5 shadow-lg p-5 h-[420px]'
+                style={{
+                    backgroundBlendMode: 'overlay',
+                    backgroundColor: '#233b00',
+                    backgroundImage: 'url("https://www.transparenttextures.com/patterns/black-scales.png")'
+                }}
+            >
                 <Formik
                     initialValues={{
                         checkInDate: null,
@@ -78,7 +85,7 @@ const page = () => {
                 </Formik>
             </div>
 
-            <div className='col-span-7'>
+            <div className='col-span-7 space-y-5'>
                 {allAvailableRooms.map(room => <AvailableRoomCard key={room?._id} roomDetails={room} />)}
             </div>
         </div>

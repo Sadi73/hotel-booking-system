@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Popover from '@mui/material/Popover';
 import { Box } from '@mui/material';
+import './popoverstyles.css'
 
 const BasicPopover = ({ label, subLabel, values, setFieldValue }) => {
     const [anchorEl, setAnchorEl] = React.useState(null);

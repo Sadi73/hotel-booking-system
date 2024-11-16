@@ -7,7 +7,7 @@ import { IoBedOutline } from 'react-icons/io5';
 
 const AvailableRoomCard = ({ roomDetails }) => {
     return (
-        <div className='font-serif md:grid grid-cols-2 my-5 gap-5'>
+        <div className='font-serif md:grid grid-cols-2 gap-5'>
             <Image src={roomDetails?.coverImage} alt='room image' width={400} height={500} className='h-64' />
             <div>
                 <h1 className='md:text-xl lg:text-3xl my-3'>{roomDetails?.roomName}</h1>

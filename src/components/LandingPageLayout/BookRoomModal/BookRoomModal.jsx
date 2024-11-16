@@ -5,6 +5,10 @@ import Image from 'next/image';
 import * as React from 'react';
 import { GoDotFill } from 'react-icons/go';
 import bannerImage from '../../../assets/room6.jpg';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import BasicDatePicker from "@/components/MUI/BasicDatePicker/BasicDatePicker";
+import BasicPopover from "@/components/MUI/BasicPopover/BasicPopover";
+import moment from "moment";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -44,40 +48,68 @@ export default function BookRoomModal({ isRoomBookModalVisible, setIsRoomBookMod
                                     <h1 className="text-4xl md:text-5xl lg:text-6xl text-center font-bold leading-normal">Book Your Stay</h1>
                                     <p className='xl:w-3/4 mx-auto leading-loose text-center'>Welcome to CozyStay Pacific Hotel. Nestled in the heart of the Pacific Islands resort, on the edge of a tranquil and beautiful Garden Island, CozyStay is a haven of warmth, tranquility and rejuvenation. </p>
 
-                                    <div className=' grid md:grid-cols-2 gap-5 text-white '>
-                                        <input
-                                            type="text"
-                                            className='bg-transparent border border-[#B99D75] rounded-md p-3'
-                                            placeholder='Check In' />
+                                    <Formik
+                                        initialValues={{
+                                            checkInDate: null,
+                                            checkOutDate: null,
+                                            noOfRooms: 1,
+                                            guests: { adult: 1, child: 1 },
+                                        }}
+                                        onSubmit={(values) => {
+                                            console.log('Form submitted with:', values);
+                                            router.push('/room-availability')
+                                        }}
+                                    >
+                                        {({ values, setFieldValue }) => (
+                                            <Form className="md:grid grid-cols-2 gap-5 text-white">
+                                                {/* Check-in Date */}
+                                                <BasicDatePicker
+                                                    label="Check In"
+                                                    selectedDate={values.checkInDate ? moment(values.checkInDate) : null}
+                                                    setSelectedDate={(date) => setFieldValue('checkInDate', moment(date).format('YYYY-MM-DD'))}
+                                                />
 
-                                        <input
-                                            type="text"
-                                            className='bg-transparent border border-[#B99D75] rounded-md p-3'
-                                            placeholder='Check Out' />
-                                        <input
-                                            type="text"
-                                            className='bg-transparent border border-[#B99D75] rounded-md p-3'
-                                            placeholder='Rooms' />
-                                        <input
-                                            type="text"
-                                            className='bg-transparent border border-[#B99D75] rounded-md p-3'
-                                            placeholder='Guest' />
+                                                {/* Check-out Date */}
+                                                <BasicDatePicker
+                                                    label="Check Out"
+                                                    selectedDate={values.checkOutDate ? moment(values.checkOutDate) : null}
+                                                    setSelectedDate={(date) => setFieldValue('checkOutDate', moment(date).format('YYYY-MM-DD'))}
+                                                />
 
-                                    </div>
+                                                {/* Number of Rooms */}
+                                                <BasicPopover
+                                                    label="Rooms"
+                                                    subLabel={`${values.noOfRooms} Room`}
+                                                    values={values}
+                                                    setFieldValue={setFieldValue}
+                                                />
 
-                                    <button className='bg-[#B99D75] w-full rounded-md md:col-span-2 lg:col-span-1 py-3 my-5'>Check Availability</button>
+                                                {/* Guests */}
+                                                <BasicPopover
+                                                    label="Guests"
+                                                    subLabel={`${values.guests.adult} Adult ${values.guests.child} Child`}
+                                                    values={values}
+                                                    setFieldValue={setFieldValue}
+                                                />
+
+                                                {/* Submit Button */}
+                                                <button className='bg-[#B99D75] w-full rounded-md col-span-2  py-3 my-5'>Check Availability</button>
+
+                                            </Form>
+                                        )}
+                                    </Formik>
 
                                     <div className='flex justify-evenly'>
                                         <div className='flex items-center'>
-                                            <GoDotFill className='text-[#B99D75]'/>
+                                            <GoDotFill className='text-[#B99D75]' />
                                             <p>Check-in: 12pm</p>
                                         </div>
                                         <div className='flex items-center'>
-                                            <GoDotFill className='text-[#B99D75]'/>
+                                            <GoDotFill className='text-[#B99D75]' />
                                             <p>Check-out: 11am</p>
                                         </div>
                                         <div className='flex items-center'>
-                                            <GoDotFill className='text-[#B99D75]'/>
+                                            <GoDotFill className='text-[#B99D75]' />
                                             <p>Minimum Check-in Age: 18</p>
                                         </div>
                                     </div>

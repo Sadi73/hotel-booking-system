@@ -1,3 +1,13 @@
 .MuiTextField-root{
     width: 100%;
+    border: 1px solid #B99D75;
+    border-radius: 5px;
 }
+
+.css-jupps9-MuiInputBase-root-MuiOutlinedInput-root,
+.css-113d811-MuiFormLabel-root-MuiInputLabel-root,
+.css-1umw9bq-MuiSvgIcon-root,
+.css-19qnlrw-MuiFormLabel-root-MuiInputLabel-root{
+    color: white;
+}
+
