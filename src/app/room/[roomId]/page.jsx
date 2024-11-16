@@ -15,6 +15,7 @@ import { PiWashingMachineThin } from "react-icons/pi";
 import { TbAirConditioning, TbSwimming } from "react-icons/tb";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Banner from '@/components/LandingPageLayout/BannerSection/Banner';
 
 const page = ({ params }) => {
     const { roomId } = use(params);
@@ -45,6 +46,8 @@ const page = ({ params }) => {
                 pauseOnHover
                 theme="colored"
             />
+
+            <Banner imagePath={roomDetails?.coverImage} />
 
             <div className='w-4/5 mx-auto lg:grid grid-cols-12 gap-5 mt-10'>
                 <div className='col-span-8'>
@@ -143,7 +146,7 @@ const page = ({ params }) => {
                                 .then(data => {
                                     if (data?.status === 200) {
                                         toast.success("Room Booking Successful")
-                                    }else{
+                                    } else {
                                         toast.error("Something went wrong")
                                     }
                                 })

@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react';
 import bannerImage from '../../../assets/banner.jpg';
 import bannerImage2 from '../../../assets/banner2.jpg';
@@ -5,13 +7,13 @@ import Image from 'next/image';
 import Menubar from './Menubar';
 import { usePathname } from 'next/navigation';
 
-const Banner = () => {
+const Banner = ({ imagePath }) => {
     const pathname = usePathname();
 
     return (
         <div className="relative w-full h-[90vh]">
             <Image
-                src={pathname.split('/').includes('room-availability') ? bannerImage2 : bannerImage}
+                src={imagePath ? imagePath : pathname.split('/').includes('room-availability') ? bannerImage2 : bannerImage}
                 alt="banner image"
                 layout="fill"
                 objectFit="cover"
