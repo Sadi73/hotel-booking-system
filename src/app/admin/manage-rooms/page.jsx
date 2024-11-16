@@ -32,14 +32,14 @@ const page = () => {
                         />
 
                         <div className='flex justify-between items-center'>
-                            <h4 className='' >{eachSpace?.roomName}</h4>
+                            <h4 className='text-black font-semibold'>{eachSpace?.roomName}</h4>
                             <CiEdit />
                         </div>
 
                         <div className='flex justify-between'>
                             <div className='flex items-center gap-2'>
                                 <IoIosPeople />
-                                <p className="">Capacity - {eachSpace?.capacity}</p>
+                                <p className="text-black">Capacity - {eachSpace?.capacity}</p>
                             </div>
 
                             {

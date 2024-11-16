@@ -33,7 +33,7 @@ const data = [
 const VisitorsSummary = () => {
     return (
         <div className='h-96 border rounded-lg shadow-xl p-5'>
-            <h2 className='font-bold mb-5'>Visitors Over Time</h2>
+            <h2 className='font-bold text-black mb-5'>Visitors Over Time</h2>
 
             <ResponsiveContainer width="100%" height="90%">
                 <LineChart

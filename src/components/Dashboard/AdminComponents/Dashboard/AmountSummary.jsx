@@ -23,7 +23,7 @@ const AmountSummary = () => {
 
     return (
         <div className="h-96 border rounded-lg shadow-xl p-5">
-            <h2 className="font-bold mb-5">Amount Details</h2>
+            <h2 className="font-bold text-black mb-5">Amount Details</h2>
             <div className="flex justify-center relative">
                 <PieChart width={250} height={170}>
                     <Pie
@@ -42,7 +42,7 @@ const AmountSummary = () => {
                     </Pie>
                 </PieChart>
 
-                <div className='absolute top-12 text-center'>
+                <div className='absolute top-12 text-center text-black'>
                     <p>Total Amount</p>
                     <p className='font-bold'>$33000</p>
                 </div>

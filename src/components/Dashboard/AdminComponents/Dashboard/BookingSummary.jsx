@@ -37,8 +37,8 @@ const data = [
 const BookingSummary = () => {
     return (
         <div className='h-96 border rounded-lg shadow-xl p-5'>
-            <h2 className='font-bold '>Booking Details</h2>
-            <p className='text-sm mb-5'>Total Booking Report </p>
+            <h2 className='font-bold text-black'>Booking Details</h2>
+            <p className='text-sm text-black mb-5'>Total Booking Report </p>
 
             <ResponsiveContainer width="100%" height="80%">
                 <AreaChart

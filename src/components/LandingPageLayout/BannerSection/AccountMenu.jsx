@@ -34,7 +34,7 @@ export default function AccountMenu() {
 
     return (
         <React.Fragment>
-            <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
+            <div style={{ display: 'flex', alignItems: 'center', textAlign: 'center', border: '0' }}>
                 <Typography sx={{}}>{authInfo?.userName}</Typography>
 
                 <IconButton
@@ -47,7 +47,7 @@ export default function AccountMenu() {
                 >
                     <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
                 </IconButton>
-            </Box>
+            </div>
 
             <Menu
                 anchorEl={anchorEl}
