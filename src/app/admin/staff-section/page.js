@@ -1,9 +1,10 @@
+import CollapsibleTable from '@/components/MUI/Tables/CollapsibleTable';
 import React from 'react';
 
 const page = () => {
     return (
         <div>
-            staff-section
+            <CollapsibleTable />
         </div>
     );
 };
