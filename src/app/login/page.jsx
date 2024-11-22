@@ -56,7 +56,8 @@ const page = () => {
                                         const userInfo = {
                                             userName: data?.user?.name,
                                             email: data?.user?.email,
-                                            token: data?.token
+                                            token: data?.token,
+                                            role: data?.user?.role
                                         }
                                         localStorage.setItem('authInfo', JSON.stringify(userInfo));
                                         setIsAuthenticated(true);

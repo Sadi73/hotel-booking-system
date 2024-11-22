@@ -30,7 +30,13 @@ const adminMenu = [
     { key: 'manage-rooms', menuText: 'Manage Rooms', path: '/admin/manage-rooms', icon: <HiOutlineBuildingOffice /> },
     { key: 'reservations', menuText: 'Reservations', path: '/admin/reservations', icon: <SlCalender /> },
     { key: 'staff-section', menuText: 'Staff Section', path: '/admin/staff-section', icon: <SlPeople /> },
-]
+];
+
+const userMenu = [
+    { key: 'profile', menuText: 'Profile', path: '/user/profile', icon: <VscDashboard /> },
+    { key: 'my-bookings', menuText: 'My Bookings', path: '/user/my-bookings', icon: <HiOutlineBuildingOffice /> },
+    { key: 'my-reviews', menuText: 'My Reviews', path: '/user/my-reviews', icon: <SlCalender /> },
+];
 
 const drawerWidth = 240;
 
@@ -40,6 +46,7 @@ function ResponsiveDrawer({ children }) {
     const [mobileOpen, setMobileOpen] = React.useState(false);
     const [isClosing, setIsClosing] = React.useState(false);
 
+    const selectedMenu = pathname.includes('user') ? userMenu : adminMenu;
 
     const handleDrawerClose = () => {
         setIsClosing(true);
@@ -65,7 +72,7 @@ function ResponsiveDrawer({ children }) {
             <Divider />
 
             <List>
-                {adminMenu.map((menuItem, index) => (
+                {selectedMenu.map((menuItem, index) => (
                     <ListItem key={index} disablePadding>
                         <ListItemButton
                             style={{
@@ -86,7 +93,7 @@ function ResponsiveDrawer({ children }) {
                 ))}
             </List>
 
-            <Divider className='my-10'/>
+            <Divider className='my-10' />
 
             <List>
                 <ListItem disablePadding>
@@ -124,7 +131,7 @@ function ResponsiveDrawer({ children }) {
                         <IoMdMenu />
                     </IconButton>
                     <Typography variant="h6" noWrap component="div">
-                        {adminMenu.find(menuItem => menuItem?.key === pathname.split('/')[2])?.menuText}
+                        {selectedMenu.find(menuItem => menuItem?.key === pathname.split('/')[2])?.menuText}
                     </Typography>
                 </Toolbar>
             </AppBar>

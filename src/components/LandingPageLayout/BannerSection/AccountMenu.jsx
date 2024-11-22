@@ -90,7 +90,8 @@ export default function AccountMenu() {
                     <Avatar /> Profile
                 </MenuItem> */}
                 <MenuItem >
-                    <Link href='/admin/dashboard'>Admin Dashboard</Link>
+                    {authInfo?.role === 'ADMIN' && <Link href='/admin/dashboard'>Admin Dashboard</Link>}
+                    {authInfo?.role === 'USER' && <Link href='/user/profile'>User Dashboard</Link>}
                 </MenuItem>
                 {/* <Divider /> */}
 
