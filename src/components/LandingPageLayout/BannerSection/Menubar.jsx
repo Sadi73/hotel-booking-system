@@ -80,7 +80,7 @@ const Menubar = () => {
             <ul className='hidden text-md lg:text-lg font-mono md:flex items-center gap-8'>
                 <li className='hover:border-b'><Link href='/'>Home</Link></li>
                 <li className='hover:border-b'><Link href='/'>Stay</Link></li>
-                <li className='hover:border-b'><Link href='/'>Rooms</Link></li>
+                <li className='hover:border-b'><Link href='/all-rooms'>Rooms</Link></li>
                 <li className='hover:border-b'><Link href='/'>Gallery</Link></li>
                 <li>
                     <button

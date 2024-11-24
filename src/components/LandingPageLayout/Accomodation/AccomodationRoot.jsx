@@ -1,5 +1,6 @@
 import React from 'react';
 import AccomodationCarousel from './AccomodationCarousel';
+import Link from 'next/link';
 
 const AccomodationRoot = () => {
     return (
@@ -10,14 +11,14 @@ const AccomodationRoot = () => {
                     <h1 className='text-3xl md:text-3xl lg:text-4xl font-serif'>The Accommodations</h1>
                 </div>
 
-                <button className='hidden md:block bg-[#ab916c] text-white font-serif px-5 py-3'>Discover All Suites</button>
+                <Link href='/all-rooms' className='hidden md:block bg-[#ab916c] text-white font-serif px-5 py-3'>Discover All Suites</Link>
             </div>
 
             <div className='my-10'>
                 <AccomodationCarousel />
             </div>
 
-            <button className='md:hidden bg-[#ab916c] text-white font-serif px-5 py-3 w-full'>Discover All Suites</button>
+            <Link href='/all-rooms' className='md:hidden bg-[#ab916c] text-white font-serif px-5 py-3 w-full'>Discover All Suites</Link>
 
         </div>
     );

@@ -28,10 +28,14 @@ const Banner = ({ imagePath }) => {
                             <div className='md:w-3/4 lg:w-3/5 xl:w-2/5 text-center space-y-3'>
                                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-normal">Room Search Results</h1>
                             </div> :
-                            <div className='md:w-3/4 lg:w-3/5 xl:w-2/5 text-center space-y-3'>
-                                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-normal">Boutique Private Island Resort</h1>
-                                <p className='text-lg font-mono'>The seaside haven of warmth, tranquility and restoration</p>
-                            </div>}
+                            pathname.split('/').includes('all-rooms') ?
+                                <div className='md:w-3/4 lg:w-3/5 xl:w-2/5 text-center space-y-3'>
+                                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-normal">Find Your Room</h1>
+                                </div> :
+                                <div className='md:w-3/4 lg:w-3/5 xl:w-2/5 text-center space-y-3'>
+                                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-normal">Boutique Private Island Resort</h1>
+                                    <p className='text-lg font-mono'>The seaside haven of warmth, tranquility and restoration</p>
+                                </div>}
                     </div>}
             </div>
 
