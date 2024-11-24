@@ -10,6 +10,7 @@ import AddNewRoomModal from '@/components/LandingPageLayout/AddNewRoomModal/AddN
 const page = () => {
     const [addRoomModalVisible, setAddRoomModalVisible] = useState(false);
     const [allRooms, setAllRooms] = useState([]);
+    const [reload, setReload] = useState(false);
 
     useEffect(() => {
         fetch(`${Config.baseApi}/rooms`)
@@ -17,12 +18,18 @@ const page = () => {
             .then(data => {
                 setAllRooms(data?.data)
             })
-    }, []);
+    }, [reload]);
 
     return (
         <div>
 
-            {addRoomModalVisible && <AddNewRoomModal addRoomModalVisible={addRoomModalVisible} setAddRoomModalVisible={setAddRoomModalVisible}/>}
+            {addRoomModalVisible &&
+                <AddNewRoomModal
+                    addRoomModalVisible={addRoomModalVisible}
+                    setAddRoomModalVisible={setAddRoomModalVisible}
+                    reload={reload}
+                    setReload={setReload}
+                />}
 
             <button
                 className='w-full md:w-52 bg-[#B99D75] text-white px-10 py-3 mb-5'

@@ -7,7 +7,7 @@ import * as React from 'react';
 import { MdOutlineClose } from "react-icons/md";
 import bannerImage from '../../../assets/room6.jpg';
 import * as Yup from 'yup';
-// import { useRouter } from "next/navigation";
+import Config from "@/Config";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -40,25 +40,23 @@ const validationSchema = Yup.object().shape({
     roomAmenities: Yup.array()
         .of(Yup.string())
         .min(1, 'At least one amenity must be selected'),
-    roomDescription: Yup.string()
+    description: Yup.string()
         .required('Room description is required')
         .min(10, 'Description must be at least 10 characters long'),
 });
 
-export default function AddNewRoomModal({ addRoomModalVisible, setAddRoomModalVisible }) {
+export default function AddNewRoomModal({ addRoomModalVisible, setAddRoomModalVisible, reload, setReload }) {
 
     const [selectedImage, setSelectedImage] = React.useState(null);
-
-
-    // const router = useRouter();
+    const [imageToUpload, setImageToUpload] = React.useState(null);
 
     const handleClose = () => {
         setAddRoomModalVisible(false);
     };
 
-
     const handleImageInputChange = (e) => {
         const file = e.target.files[0];
+        setImageToUpload(e.target.files[0]);
         if (file) {
             const imageUrl = URL.createObjectURL(file);
             setSelectedImage(imageUrl);
@@ -98,13 +96,40 @@ export default function AddNewRoomModal({ addRoomModalVisible, setAddRoomModalVi
                                         numberOfGuest: { adult: 1, child: 1 },
                                         numberOfBed: { king: 1, pet: 1 },
                                         roomAmenities: [],
-                                        roomDescription: '',
+                                        description: '',
                                     }}
                                     validationSchema={validationSchema}
                                     onSubmit={(values) => {
-                                        console.log(values);
-                                        // router.push('/room-availability');
-                                        // handleClose();
+
+                                        if (imageToUpload) {
+                                            const formData = new FormData();
+                                            formData.append('image', imageToUpload);
+
+                                            fetch(`https://api.imgbb.com/1/upload?key=${process.env.NEXT_PUBLIC_IMGBB_API_KEY}`, {
+                                                method: 'POST',
+                                                body: formData,
+                                            })
+                                                .then(res => res.json())
+                                                .then(data => {
+                                                    if (data?.status === 200) {
+                                                        fetch(`${Config.baseApi}/add-new-room`, {
+                                                            method: 'POST',
+                                                            headers: {
+                                                                'Content-Type': 'application/json'
+                                                            },
+                                                            body: JSON.stringify({ ...values, coverImage: data?.data?.url })
+                                                        })
+                                                            .then(response => response.json())
+                                                            .then(finalData => {
+                                                                if (finalData?.status === 200) {
+                                                                    setReload(!reload);
+                                                                    handleClose();                                                                } else {
+                                                                }
+                                                            })
+                                                    }
+                                                })
+                                        }
+
                                     }}
                                 >
                                     {({ values, setFieldValue }) => (
@@ -245,14 +270,14 @@ export default function AddNewRoomModal({ addRoomModalVisible, setAddRoomModalVi
                                             {/* Room Description */}
                                             <div>
                                                 <Field
-                                                    name="roomDescription"
+                                                    name="description"
                                                     as={TextField}
                                                     label="Enter Room Description"
                                                     multiline
                                                     rows={4}
                                                     fullWidth
                                                 />
-                                                <ErrorMessage className='error-message' name="roomDescription" />
+                                                <ErrorMessage className='error-message' name="description" />
                                             </div>
 
                                             <div>

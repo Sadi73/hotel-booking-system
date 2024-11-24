@@ -16,6 +16,27 @@ import { TbAirConditioning, TbSwimming } from "react-icons/tb";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Banner from '@/components/LandingPageLayout/BannerSection/Banner';
+import * as Yup from 'yup';
+
+const validationSchema = Yup.object().shape({
+    checkInDate: Yup.date()
+        .nullable()
+        .required('Check-in date is required')
+        .test('is-today-or-future', 'Check-in date cannot be in the past', (value) =>
+            value ? moment(value).isSameOrAfter(moment(), 'day') : true
+        ),
+    checkOutDate: Yup.date()
+        .nullable()
+        .required('Check-out date is required')
+        .test('is-after-checkin', 'Check-out date must be after check-in date', function (value) {
+            const { checkInDate } = this.parent;
+            return value && checkInDate ? moment(value).isAfter(moment(checkInDate), 'day') : true;
+        }),
+    noOfRooms: Yup.number()
+        .required('Number of rooms is required')
+        .min(1, 'At least one room must be selected')
+        .max(10, 'Cannot book more than 10 rooms at once'),
+});
 
 const page = ({ params }) => {
     const { roomId } = use(params);
@@ -49,7 +70,7 @@ const page = ({ params }) => {
 
             <Banner imagePath={roomDetails?.coverImage} />
 
-            <div className='w-4/5 mx-auto lg:grid grid-cols-12 gap-5 mt-10'>
+            <div className='w-4/5 mx-auto lg:grid grid-cols-12 items-start gap-5 mt-10'>
                 <div className='col-span-8'>
                     <h1 className='md:text-xl lg:text-3xl my-3'>{roomDetails?.roomName}</h1>
                     <p>Private Pool / Ocean View / Single Level</p>
@@ -121,78 +142,95 @@ const page = ({ params }) => {
                     </div>
                 </div>
 
-                <div className='col-span-4 shadow-2xl rounded-xl py-5 px-5 lg:px-10 bg-black bg-opacity-30 h-[500px]'>
-                    <div className='flex lg:flex-col xl:flex-row justify-between items-center my-5'>
-                        <h1 className='uppercase text-2xl font-mono'>Reserve</h1>
-                        <p>From <span className='font-bold'>$399</span>/night</p>
-                    </div>
+                {authInfo?.role !== 'ADMIN' &&
+                    <div className='col-span-4 shadow-2xl rounded-xl py-5 px-5 lg:px-10 bg-black bg-opacity-30'>
+                        <div className='flex lg:flex-col xl:flex-row justify-between items-center my-5'>
+                            <h1 className='uppercase text-2xl font-mono'>Reserve</h1>
+                            <p>From <span className='font-bold'>${roomDetails?.price}</span>/night</p>
+                        </div>
 
-                    <Formik
-                        initialValues={{
-                            checkInDate: null,
-                            checkOutDate: null,
-                            noOfRooms: 1,
-                            guests: { adult: 1, child: 1 },
-                        }}
-                        onSubmit={(values) => {
-                            fetch(`${Config.baseApi}/book-room`, {
-                                method: 'POST',
-                                headers: {
-                                    'Content-Type': 'application/json'
-                                },
-                                body: JSON.stringify({ ...values, roomId, reservedBy: authInfo?.email })
-                            })
-                                .then(res => res.json())
-                                .then(data => {
-                                    if (data?.status === 200) {
-                                        toast.success("Room Booking Successful")
-                                    } else {
-                                        toast.error("Something went wrong")
-                                    }
+                        <Formik
+                            initialValues={{
+                                checkInDate: null,
+                                checkOutDate: null,
+                                noOfRooms: 1,
+                                guests: { adult: 1, child: 0 },
+                            }}
+                            validationSchema={validationSchema}
+                            onSubmit={(values, { setSubmitting }) => {
+                                fetch(`${Config.baseApi}/book-room`, {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                    },
+                                    body: JSON.stringify({ ...values, roomId, reservedBy: authInfo?.email }),
                                 })
-                        }}
-                    >
-                        {({ values, setFieldValue }) => (
-                            <Form className='space-y-5'>
-                                {/* Check-in Date */}
-                                <BasicDatePicker
-                                    label="Check In"
-                                    selectedDate={values.checkInDate ? moment(values.checkInDate) : null}
-                                    setSelectedDate={(date) => setFieldValue('checkInDate', moment(date).format('YYYY-MM-DD'))}
-                                />
+                                    .then((res) => res.json())
+                                    .then((data) => {
+                                        if (data?.status === 200) {
+                                            toast.success('Room Booking Successful');
+                                        } else {
+                                            toast.error('Something went wrong');
+                                        }
+                                    })
+                                    .finally(() => {
+                                        setSubmitting(false);
+                                    });
+                            }}
+                        >
+                            {({ values, setFieldValue, errors, isSubmitting }) => (
+                                <Form className="space-y-5">
+                                    {/* Check-in Date */}
+                                    <div>
+                                        <BasicDatePicker
+                                            label="Check In"
+                                            selectedDate={values.checkInDate ? moment(values.checkInDate) : null}
+                                            setSelectedDate={(date) =>
+                                                setFieldValue('checkInDate', moment(date).format('YYYY-MM-DD'))
+                                            }
+                                        />
+                                        {errors.checkInDate && <p className='text-red-800'>{errors.checkInDate}</p>}
+                                    </div>
 
-                                {/* Check-out Date */}
-                                <BasicDatePicker
-                                    label="Check Out"
-                                    selectedDate={values.checkOutDate ? moment(values.checkOutDate) : null}
-                                    setSelectedDate={(date) => setFieldValue('checkOutDate', moment(date).format('YYYY-MM-DD'))}
-                                />
+                                    {/* Check-out Date */}
+                                    <div>
+                                        <BasicDatePicker
+                                            label="Check Out"
+                                            selectedDate={values.checkOutDate ? moment(values.checkOutDate) : null}
+                                            setSelectedDate={(date) =>
+                                                setFieldValue('checkOutDate', moment(date).format('YYYY-MM-DD'))
+                                            }
+                                        />
+                                        {errors.checkOutDate && <p className='text-red-800'>{errors.checkOutDate}</p>}
+                                    </div>
 
-                                {/* Number of Rooms */}
-                                <BasicPopover
-                                    label="Rooms"
-                                    subLabel={`${values.noOfRooms} Room`}
-                                    values={values}
-                                    setFieldValue={setFieldValue}
-                                />
+                                    {/* Number of Rooms */}
+                                    <div>
+                                        <BasicPopover
+                                            label="Rooms"
+                                            subLabel={`${values.noOfRooms} Room`}
+                                            values={values}
+                                            setFieldValue={setFieldValue}
+                                        />
+                                        {errors.noOfRooms && <p className='text-red-800'>{errors.noOfRooms}</p>}
+                                    </div>
 
-                                {/* Guests */}
-                                <BasicPopover
-                                    label="Guests"
-                                    subLabel={`${values.guests.adult} Adult ${values.guests.child} Child`}
-                                    values={values}
-                                    setFieldValue={setFieldValue}
-                                />
+                                    {/* Guests */}
+                                    <BasicPopover
+                                        label="Guests"
+                                        subLabel={`${values.guests.adult} Adult ${values.guests.child} Child`}
+                                        values={values}
+                                        setFieldValue={setFieldValue}
+                                    />
 
-                                {/* Submit Button */}
-
-                                <button type="submit" className='bg-black text-white w-full py-3'>Book Your Stay Now</button>
-                            </Form>
-                        )}
-                    </Formik>
-
-
-                </div>
+                                    {/* Submit Button */}
+                                    <button type="submit" disabled={isSubmitting} className="bg-black text-white w-full py-3">
+                                        Book Your Stay Now
+                                    </button>
+                                </Form>
+                            )}
+                        </Formik>
+                    </div>}
             </div>
         </>
     );

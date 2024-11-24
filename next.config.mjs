@@ -5,19 +5,18 @@
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    images: {
-      domains: ['i.ibb.co.com'], // Add allowed external image domains here
-      remotePatterns: [
-        {
-          protocol: 'https',
-          hostname: 'i.ibb.co.com',
-          port: '',
-          pathname: '/images/**'
-        }
-      ],
-    },
-    reactStrictMode: true, // Enables React Strict Mode
-  };
-  
-  export default nextConfig;
-  
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**', // Matches any hostname
+        port: '', // Matches any port (or leave it empty)
+        pathname: '/**', // Matches any path
+      },
+    ],
+  },
+  reactStrictMode: true, // Enables React Strict Mode
+};
+
+export default nextConfig;
+
