@@ -5,8 +5,10 @@ import Image from 'next/image';
 import { CiEdit } from "react-icons/ci";
 import { IoIosPeople } from 'react-icons/io';
 import Config from '@/Config';
+import AddNewRoomModal from '@/components/LandingPageLayout/AddNewRoomModal/AddNewRoomModal';
 
 const page = () => {
+    const [addRoomModalVisible, setAddRoomModalVisible] = useState(false);
     const [allRooms, setAllRooms] = useState([]);
 
     useEffect(() => {
@@ -19,7 +21,13 @@ const page = () => {
 
     return (
         <div>
-            <button className='w-full md:w-52 bg-[#B99D75] text-white px-10 py-3 mb-5'>Add New Room</button>
+
+            {addRoomModalVisible && <AddNewRoomModal addRoomModalVisible={addRoomModalVisible} setAddRoomModalVisible={setAddRoomModalVisible}/>}
+
+            <button
+                className='w-full md:w-52 bg-[#B99D75] text-white px-10 py-3 mb-5'
+                onClick={() => setAddRoomModalVisible(true)}
+            > + Add New Room</button>
 
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5'>
                 {allRooms?.map((eachSpace) => (
