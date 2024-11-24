@@ -9,7 +9,7 @@ const page = () => {
                 <button className='flex items-center gap-3'><FaUserEdit /> Edit     </button>
             </div>
 
-            <div className='space-y-5'>
+            <div className='space-y-5 text-black'>
                 <div className='flex w-1/2 justify-between'>
                     <label>Name</label>
                     <p>N/A</p>

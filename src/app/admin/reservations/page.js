@@ -6,7 +6,7 @@ import Image from 'next/image';
 const page = () => {
     return (
         <div className='min-w-[1000px] overflow-auto space-y-3'>
-            <div className='grid grid-cols-12 gap-5 px-5 font-bold'>
+            <div className='grid grid-cols-12 gap-5 px-5 font-bold text-black'>
                 <p className=''>Image</p>
                 <p className='col-span-2'>Room Name</p>
                 <p className='col-span-2'>Booked By</p>
@@ -18,7 +18,7 @@ const page = () => {
 
             <hr/>
 
-            <div className='grid grid-cols-12 gap-5 items-center border rounded-lg p-5 text-sm'>
+            <div className='grid grid-cols-12 gap-5 items-center border rounded-lg p-5 text-sm text-black'>
                 <Image src={roomImage1} alt='room image' width={100} height={100} />
                 <p className='col-span-2'>Delux Room</p>
                 <p className='col-span-2'>Raihan Alam</p>
@@ -31,17 +31,13 @@ const page = () => {
                 </div>
             </div>
 
-            <div className='grid grid-cols-12 gap-5 items-center border rounded-lg p-5 text-sm'>
+            <div className='grid grid-cols-12 gap-5 items-center border rounded-lg p-5 text-sm text-black'>
                 <Image src={roomImage2} alt='room image' width={100} height={100} />
                 <p className='col-span-2'>Premium Cottage</p>
                 <p className='col-span-2'>Nafia Sultana</p>
                 <p className='col-span-2'>12 November, 2024</p>
                 <p className='col-span-2'>2 Adults, 1 Child</p>
                 <p className='text-green-500'>Approved</p>
-                {/* <div className='col-span-2 flex gap-2 items-start'>
-                    <button className='bg-green-700 text-white px-3 py-1 rounded-md'>Approve</button>
-                    <button className='bg-red-700 text-white px-3 py-1 rounded-md'>Reject</button>
-                </div> */}
             </div>
         </div>
     );

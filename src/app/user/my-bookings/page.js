@@ -20,7 +20,7 @@ const page = () => {
     return (
         <>
             {myBookings?.length > 0 ?
-                <div className='min-w-[1000px] overflow-auto space-y-3'>
+                <div className='min-w-[1000px] overflow-auto space-y-3 text-black'>
                     <div className='grid grid-cols-6 gap-5 px-5 font-bold'>
                         <p className=''>Image</p>
                         <p className=''>Room Name</p>
