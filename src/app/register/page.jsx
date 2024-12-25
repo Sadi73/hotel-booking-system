@@ -39,6 +39,7 @@ const page = () => {
                                 .required('Confirm Password is required')
                         })}
                         onSubmit={(value) => {
+                            delete value.confirmPassword;
 
                             fetch(`${Config.baseApi}/register`, {
                                 method: 'POST',
